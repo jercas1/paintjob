@@ -12,3 +12,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('paintjob-create', [PaintJobController::class, 'create']);
 Route::get('paintjob-get', [PaintJobController::class, 'get']);
 Route::get('paintjob-mark-completed/{paint_job_id}', [PaintJobController::class, 'markCompleted']);
+Route::get('paintjob-get-breakdown', [PaintJobController::class, 'getBreakDown']);

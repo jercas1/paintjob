@@ -5,14 +5,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PaintJob;
 
+use DB;
+
 class PaintJobController extends Controller
 {
-    public function markCompleted($paint_job_id) {
-        $paint_job = PaintJob::find($paint_job_id);
+    public function getBreakDown() {
+        $breakdown = PaintJob::select('target_color', DB::raw('count(*) as breakdown'))
+            ->where('status', 'completed')
+            ->groupBy('target_color')
+            ->get();
 
         return response()->json([
             'success' => true,
-            'paint_job_id' => $paint_job_id,
+            'breakdown' => $breakdown,
+        ]);
+    }
+
+    public function markCompleted($paint_job_id) {
+        $paint_job = PaintJob::find($paint_job_id);
+        $paint_job->status = "completed";
+        $paint_job->save();
+
+        return response()->json([
+            'success' => true,
         ]);
     }
 
@@ -26,7 +41,7 @@ class PaintJobController extends Controller
 
         return response()->json([
             'success' => true,
-            'request' => $request->input('plate_number')
+            'paint_job' => $paint_job
         ]);
     }
 
