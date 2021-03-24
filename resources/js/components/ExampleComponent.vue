@@ -155,25 +155,25 @@
 
             <div class="card-body">
               <dl class="row">
-                <dt class="col-sm-3">Total Cars Painted:</dt>
-                <dd class="col-sm-9">
+                <dt class="col-sm-9">Total Cars Painted:</dt>
+                <dd class="col-sm-3">
                   {{ breakdown.map(e => e.breakdown).reduce((a, b) => a + b, 0) }}
                 </dd>
 
                 <dt class="col-sm-12">Breakdown:</dt>
 
-                <dt class="col-sm-3" style="padding-left: 30px">Blue</dt>
-                <dd class="col-sm-9">
+                <dt class="col-sm-9" style="padding-left: 30px">Blue</dt>
+                <dd class="col-sm-3">
                   {{ breakdown.find(e => e.target_color == 'Blue').breakdown }}
                 </dd>
 
-                <dt class="col-sm-3" style="padding-left: 30px">Red</dt>
-                <dd class="col-sm-9">
+                <dt class="col-sm-9" style="padding-left: 30px">Red</dt>
+                <dd class="col-sm-3">
                   {{ breakdown.find(e => e.target_color == 'Red').breakdown }}
                 </dd>
 
-                <dt class="col-sm-3" style="padding-left: 30px">Green</dt>
-                <dd class="col-sm-9">
+                <dt class="col-sm-9" style="padding-left: 30px">Green</dt>
+                <dd class="col-sm-3">
                   {{ breakdown.find(e => e.target_color == 'Green').breakdown }}
                 </dd>
               </dl>
